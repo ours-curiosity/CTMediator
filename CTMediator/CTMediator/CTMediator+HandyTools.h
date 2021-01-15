@@ -6,7 +6,6 @@
 //  Copyright © 2020 casa. All rights reserved.
 //
 
-#if TARGET_OS_IOS
 
 #import "CTMediator.h"
 #import <UIKit/UIKit.h>
@@ -16,11 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CTMediator (HandyTools)
 
 - (UIViewController * _Nullable)topViewController;
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
+/// 检测某个ViewController是否可以被push
+/// @param viewController 需要检测的ViewController
+- (BOOL)canPushViewController:(UIViewController *)viewController;
+- (BOOL)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable )(void))completion;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#endif

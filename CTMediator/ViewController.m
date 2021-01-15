@@ -10,6 +10,8 @@
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "CTMediator+CTMediatorModuleAActions.h"
 #import "TableViewController.h"
+#import "CTMediator+Remote.h"
+#import "CTMediator+HandyTools.h"
 
 NSString * const kCellIdentifier = @"kCellIdentifier";
 
@@ -89,6 +91,12 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
     if (indexPath.row == 6) {
         [[CTMediator sharedInstance] performTarget:@"InvalidTarget" action:@"InvalidAction" params:nil shouldCacheTarget:NO];
     }
+    
+    if (indexPath.row == 7) {
+        [[CTMediator sharedInstance] performTarget:@"A" action:@"nativeFetchDetailViewController"params:@{@"key": @"test push action"} actionType:CTActionPush actionAnimated:true shouldCacheTarget:true];
+        
+//        [[CTMediator sharedInstance] ct_pushViewController:[UIViewController alloc] animated:YES];
+    }
 }
 
 #pragma mark - getters and setters
@@ -113,7 +121,8 @@ NSString * const kCellIdentifier = @"kCellIdentifier";
                         @"present image when error",
                         @"show alert",
                         @"table view cell",
-                        @"No Target-Action response"
+                        @"No Target-Action response",
+                        @"action push",
                         ];
     }
     return _dataSource;
